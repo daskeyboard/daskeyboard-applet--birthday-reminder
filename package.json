@@ -254,14 +254,7 @@
           "value": "#F6FF00",
           "controlType": "color"
         }
-      ],
-      "requirements": {
-        "applet": {
-          "monthOfTheBirthday": "number",
-          "dayOfTheBirthday": "number",
-          "nameOfTheBirthdayPerson": "string"
-        }
-      }
+      ]
     },
     "devDependencies": {
       "mocha": "^5.2.0"
