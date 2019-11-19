@@ -2,14 +2,14 @@
     "name": "daskeyboard-applet--birthday-reminder",
     "displayName": "Birthday Reminder",
     "publisher": "Das Keyboard",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "description": "You will never forget a birthday again.",
     "longDescription": "Get birthday alerts directly on a Das Keybaord Q devices.",
     "officialProductName": "Birthday Reminder",
     "publisherName": "Das Keyboard",
     "isSingleton": false,
-    "icon": "",
-    "image": "",
+    "icon": "assets/icon.png",
+    "image": "assets/image.png",
     "authorName": "Das Keyboard",
     "authorUrl": "https://twitter.com/daskeyboard",
     "issuesUrl": "https://github.com/daskeyboard/daskeyboard-applet--birthday-reminder/issues",
@@ -20,7 +20,7 @@
     "readMeUrl": "README.md",
     "readMeEndUserUrl": "README_ENDUSER.md",
     "engines": {
-      "das-keyboard-q": "3.1.0"
+      "das-keyboard-q": "3.2.6"
     },
     "main": "index.js",
     "scripts": {
@@ -29,8 +29,7 @@
     "author": "Camille Bouquet",
     "license": "MIT",
     "dependencies": {
-      "daskeyboard-applet": "2.10.6",
-      "request-promise": "^4.2.2"
+      "daskeyboard-applet": "2.10.6"
     },
     "qConfig": {
       "geometry": {
