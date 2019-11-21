@@ -4,7 +4,7 @@
   "publisher": "Das Keyboard",
   "version": "1.0.0",
   "description": "You will never forget a birthday again.",
-  "longDescription": "Get birthday alerts directly on a Das Keybaord Q devices.",
+  "longDescription": "Get birthday alerts directly on a Das Keyboard Q devices.",
   "officialProductName": "Birthday Reminder",
   "publisherName": "Das Keyboard",
   "isSingleton": false,
@@ -241,7 +241,7 @@
         "help": "",
         "required": true,
         "order": 1,
-        "value": "0",
+        "value": "",
         "controlType": "textbox"
       },
       {

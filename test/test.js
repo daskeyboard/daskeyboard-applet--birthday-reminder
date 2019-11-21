@@ -16,11 +16,9 @@ describe('BirthdayReminder', () => {
     describe('#run()', () => {
         it('sends a signal with the name of the birthday person in the signal message when it is the birthday date', async function () {
             const config = getConfigForDate(new Date());// create a configuration: the birthday date is the current date
-            console.log('>>>>>>config:', config);
             let app = await buildApp(config);
             return app.run().then((signal) => {
                 assert.ok(signal);
-                console.log('>>>>>>>>message', signal.message);
                 assert(signal.message.includes(config.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
                 assert.equal(signal.points[0][0].effect, q.Effects.BLINK);
             }).catch((error) => {
@@ -32,7 +30,6 @@ describe('BirthdayReminder', () => {
     describe('#run()', () => {
         it('sends not a signal when it is not the birthday date', async function () {
             const simulatedDate = getConfigForDate(new Date(2020, 11, 21));
-            console.log('>>>>>>simulatedDate', simulatedDate);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.equal(signal, null);
@@ -43,6 +40,7 @@ describe('BirthdayReminder', () => {
     });
 })
 
+//This function gives the configuration needed for the birthday date
 function getConfigForDate(date) {
     const defaultConfig = {
         applet: {
@@ -60,6 +58,7 @@ function getConfigForDate(date) {
     return defaultConfig;
 }
 
+//Build application
 async function buildApp(config) {
     let app = new t.BirthdayReminder();
     await app.processConfig(config);
