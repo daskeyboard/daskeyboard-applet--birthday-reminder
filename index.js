@@ -20,9 +20,10 @@ class BirthdayReminder extends q.DesktopApp {
 
         if (currentMonth == monthOfTheBirthday && currentDay == dayOfTheBirthday) {
             logger.info("BirthdayReminder, you will never forget a birthday.");
+            const color = '#00FF00';
             return new q.Signal({
                 points: [
-                    [new q.Point(this.config.reminderColor, q.Effects.BLINK)]
+                    [new q.Point(color, q.Effects.BLINK)]
                 ],
                 name: 'Birthday Reminder',
                 message: `Today is the birthday of ${this.config.nameOfTheBirthdayPerson}`

@@ -20,6 +20,7 @@ describe('BirthdayReminder', () => {
             let app = await buildApp(config);
             return app.run().then((signal) => {
                 assert.ok(signal);
+                console.log('>>>>>>>>message', signal.message);
                 assert(signal.message.includes(config.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
                 assert.equal(signal.points[0][0].effect, q.Effects.BLINK);
             }).catch((error) => {
@@ -46,7 +47,7 @@ function getConfigForDate(date) {
     const defaultConfig = {
         applet: {
             user: {
-                nameOfTheBirthdayPerson: 'oooo',
+                nameOfTheBirthdayPerson: 'Toto',
                 monthOfTheBirthday: date.getMonth(),
                 dayOfTheBirthday: date.getDate()
             }
