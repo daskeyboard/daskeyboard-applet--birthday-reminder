@@ -7,9 +7,9 @@ This applet will remind you the birthday date you don't want to forget.
 
 ## Example
 
-The "B" key will blink and remind you the birthday of the person you entered.
+The key chosen will blink and remind you the birthday of the person you entered.
 
-![Birthday Reminder on a Das Keybaord Q](assets/image.png "Birthday Reminder result")
+![Birthday Reminder on a Das Keyboard Q](assets/image.png "Birthday Reminder result")
 
 ## Changelog
 
