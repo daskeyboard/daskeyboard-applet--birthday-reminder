@@ -14,7 +14,7 @@ describe('BirthdayReminder', () => {
         });
     });
     describe('#run()', () => {
-        it('sends a signal with the name of the birthday person in the signal message when it is the birthday date', async function () {
+        it('sends a signal with the name of the birthday person in the signal message when it is the birthday date + check if the keyboard key blinks', async function () {
             const config = getConfigForDate(new Date());// create a configuration: the birthday date is the current date
             let app = await buildApp(config);
             return app.run().then((signal) => {
