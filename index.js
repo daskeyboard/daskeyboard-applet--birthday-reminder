@@ -52,7 +52,7 @@ class BirthdayReminder extends q.DesktopApp {
             // if the current date (month + day) matches with the birthday date entered by the user,
             // the keyboard key chosen in the dashboard must blink 
         } else {
-            let color = '#60F93B'; // if the current is far from the birthday date
+            let color = '#60F93B'; // if the current date is far from the birthday date
             // the birthday date is in one month
             if (daysToBirthday <= 30) {
                 color = '#F9E53B'; // keyboard key is yellow
