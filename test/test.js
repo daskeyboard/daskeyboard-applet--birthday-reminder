@@ -14,8 +14,9 @@ describe('BirthdayReminder', () => {
         });
     });
     describe('#run()', () => {
-        it('sends a signal with the name of the birthday person in the signal message when it is the birthday date + check if the keyboard key blinks', async function () {
+        it('sends a signal with the name of the birthday person in the signal message when it is the birthday date + check if the keyboard key', async function () {
             const config = getConfigForDate(new Date());// create a configuration: the birthday date is the current date
+            console.log('<<<<<<', config.applet.user.monthOfTheBirthday+5);
             let app = await buildApp(config);
             return app.run().then((signal) => {
                 assert.ok(signal);
@@ -32,7 +33,9 @@ describe('BirthdayReminder', () => {
             const simulatedDate = getConfigForDate(new Date(2020, 11, 21));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
-                assert.equal(signal, null);
+                assert.ok(signal);
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
+                //assert.equal(signal, null);
             }).catch((error) => {
                 assert.fail(error)
             });
