@@ -29,12 +29,58 @@ describe('BirthdayReminder', () => {
     });
 
     describe('#run()', () => {
-        it('sends not a signal when it is not the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2020, 11, 21));
+        it('the current date is far from the birthday date', async function () {
+            const simulatedDate = getConfigForDate(new Date(2019, 05, 21));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
                 assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
+                console.log('<<<<<<<<<far from the birthday date:', signal.points);
+                //assert.equal(signal, null);
+            }).catch((error) => {
+                assert.fail(error)
+            });
+        });
+    });
+
+    describe('#run()', () => {
+        it('1 week before the birthday date', async function () {
+            const simulatedDate = getConfigForDate(new Date(2019, 10, 28));
+            let app = await buildApp(simulatedDate);
+            return app.run().then((signal) => {
+                assert.ok(signal);
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
+                console.log('<<<<<<<<<1 week:', signal.points);
+                //assert.equal(signal, null);
+            }).catch((error) => {
+                assert.fail(error)
+            });
+        });
+    });
+
+    describe('#run()', () => {
+        it('2 week before the birthday date', async function () {
+            const simulatedDate = getConfigForDate(new Date(2019, 11, 06));
+            let app = await buildApp(simulatedDate);
+            return app.run().then((signal) => {
+                assert.ok(signal);
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
+                console.log('<<<<<<<<<2 week:', signal.points);
+                //assert.equal(signal, null);
+            }).catch((error) => {
+                assert.fail(error)
+            });
+        });
+    });
+
+    describe('#run()', () => {
+        it('1 month before the birthday date', async function () {
+            const simulatedDate = getConfigForDate(new Date(2019, 11, 24));
+            let app = await buildApp(simulatedDate);
+            return app.run().then((signal) => {
+                assert.ok(signal);
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// on verifie si on recoit le signal avec le nom dedans
+                console.log('<<<<<<<<<1 month:', signal.points);
                 //assert.equal(signal, null);
             }).catch((error) => {
                 assert.fail(error)
