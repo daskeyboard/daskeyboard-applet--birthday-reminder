@@ -243,15 +243,6 @@
         "order": 1,
         "value": "",
         "controlType": "textbox"
-      },
-      {
-        "key": "reminderColor",
-        "label": "Choose the color of the reminder",
-        "help": "",
-        "required": true,
-        "order": 6,
-        "value": "#F6FF00",
-        "controlType": "color"
       }
     ]
   },
