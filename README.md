@@ -1,13 +1,12 @@
 # Q Applet: Birthday Reminder
 
-Let us remember the dates, so you can celebrate.
-This applet will remind you the birthday dates you don't want to forget.
+This applet will remind you of the birthday dates you don't want to forget.
 
 [GitHub repository](https://github.com/daskeyboard/daskeyboard-applet--birthday-reminder)
 
 ## Example
 
-The key chosen will blink and remind you the birthday of the person you entered.
+The key chosen will blink on that day and remind you of the birthday.
 
 ![Birthday Reminder on a Das Keyboard Q](assets/image.png "Birthday Reminder result")
 
