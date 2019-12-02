@@ -22,8 +22,10 @@ describe('BirthdayReminder', () => {
                 assert.ok(signal);
                 // we check if we receive the signal with the birthday name
                 assert(signal.message.includes(config.applet.user.nameOfTheBirthdayPerson));
-                // check if the key is blinking red
+                // check if the key is blinking
                 assert.equal(signal.points[0][0].effect, q.Effects.BLINK);
+                // check if the key is red
+                assert.equal(signal.points[0][0].color, '#F11512');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -38,8 +40,10 @@ describe('BirthdayReminder', () => {
                 assert.ok(signal);
                 // we check if we receive the signal with the birthday name
                 assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
                 // checks if the color is green
-                 assert.equal(signal.points[0][0].color, '#60F93B');
+                assert.equal(signal.points[0][0].color, '#60F93B');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -48,12 +52,14 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key 1 week before the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 10, 30));
+            const simulatedDate = getConfigForDate(new Date(2019, 11, 7));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
                 // we check if we receive the signal with the birthday name
                 assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson)); 
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
                 // checks if the color is yellow
                 assert.equal(signal.points[0][0].color, '#C55D11');
             }).catch((error) => {
@@ -64,12 +70,14 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key 2 weeks before the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 11, 06));
+            const simulatedDate = getConfigForDate(new Date(2019, 11, 15));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
                 // we check if we receive the signal with the birthday name
                 assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
                 // checks if the color is yellow/orange
                 assert.equal(signal.points[0][0].color, '#D6BD1D');
             }).catch((error) => {
@@ -86,6 +94,8 @@ describe('BirthdayReminder', () => {
                 assert.ok(signal.points);
                 // we check if we receive the signal with the birthday name
                 assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
                 // checks if the color is orange
                 assert.equal(signal.points[0][0].color, '#F9E53B');
             }).catch((error) => {
