@@ -34,10 +34,12 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key more than 1 month before the birthday date', async function () {
+            // today dates
             const today = new Date();
-            dayToCome = new Date();
-            const endTime =  dayToCome.setDate(today.getDate() +75);
-            const simulatedDate = getConfigForDate(new Date(endTime));
+            const dayToCome = new Date();
+            // we add more than 1 month to the current day in order to simulate the birthday date 
+            dayToCome.setDate(today.getDate() +75);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
@@ -56,9 +58,10 @@ describe('BirthdayReminder', () => {
     describe('#run()', () => {
         it('checks color of the selected keyboard key 1 week before the birthday date', async function () {
             const today = new Date();
-            dayToCome = new Date();
-            const endTime =  dayToCome.setDate(today.getDate() + 6);
-            const simulatedDate = getConfigForDate(new Date(endTime));            
+            const dayToCome = new Date();
+            // we add less than 1 week to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 6);
+            const simulatedDate = getConfigForDate(dayToCome);            
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
@@ -77,9 +80,10 @@ describe('BirthdayReminder', () => {
     describe('#run()', () => {
         it('checks color of the selected keyboard key 2 weeks before the birthday date', async function () {
             const today = new Date();
-            dayToCome = new Date();
-            const endTime =  dayToCome.setDate(today.getDate() + 14);
-            const simulatedDate = getConfigForDate(new Date(endTime));
+            const dayToCome = new Date();
+            // we add less than 2 weeks to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 14);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal);
@@ -98,9 +102,10 @@ describe('BirthdayReminder', () => {
     describe('#run()', () => {
         it('checks color of the selected keyboard key 1 month before the birthday date', async function () {
             const today = new Date();
-            dayToCome = new Date();
-            const endTime =  dayToCome.setDate(today.getDate() + 27);
-            const simulatedDate = getConfigForDate(new Date(endTime));
+            const dayToCome = new Date();
+            // we add less than 1 month to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 27);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal.points);
