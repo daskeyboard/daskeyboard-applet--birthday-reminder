@@ -6,7 +6,7 @@ This applet will remind you of the birthday dates you don't want to forget.
 
 ## Example
 
-The key chosen will blink on that day and remind you of the birthday.
+The selected key will progressively change from green to blinking red as the birthday date approches.
 
 ![Birthday Reminder on a Das Keyboard Q](assets/image.png "Birthday Reminder result")
 
@@ -23,7 +23,9 @@ the Q Desktop application (https://www.daskeyboard.com/q)
 
 ## Running tests
 
-Type npm test in your terminal.
+Run
+
+    npm test
 
 ## Contributions
 

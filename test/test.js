@@ -14,14 +14,18 @@ describe('BirthdayReminder', () => {
         });
     });
     describe('#run()', () => {
-        it('sends a signal with the name of the birthday person in the signal message when it is the birthday date + check if the keyboard key', async function () {
-            const config = getConfigForDate(new Date());// create a configuration: the birthday date is the current date
-            console.log('<<<<<<', config.applet.user.monthOfTheBirthday+5);
+        it('checks the birthday name & if selected keyboard key blinks', async function () {
+            // create a configuration: the birthday date is the current date
+            const config = getConfigForDate(new Date());
             let app = await buildApp(config);
             return app.run().then((signal) => {
-                assert.ok(signal.points);
-                assert(signal.message.includes(config.applet.user.nameOfTheBirthdayPerson));// we check if we receive the signal with the birthday name
+                assert.ok(signal);
+                // we check if we receive the signal with the birthday name
+                assert(signal.message.includes(config.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is blinking
                 assert.equal(signal.points[0][0].effect, q.Effects.BLINK);
+                // check if the key is red
+                assert.equal(signal.points[0][0].color, '#F11512');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -29,13 +33,22 @@ describe('BirthdayReminder', () => {
     });
 
     describe('#run()', () => {
-        it('the current date is far from the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 05, 21));
+        it('checks color of the selected keyboard key more than 1 month before the birthday date', async function () {
+            // today dates
+            const today = new Date();
+            const dayToCome = new Date();
+            // we add more than 1 month to the current day in order to simulate the birthday date 
+            dayToCome.setDate(today.getDate() +75);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
-                assert.ok(signal.points);
-                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// we check if we receive the signal with the birthday name
-                console.log('<<<<<<<<<far from the birthday date:', signal.points);
+                assert.ok(signal);
+                // we check if we receive the signal with the birthday name
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
+                // checks if the color is green
+                assert.equal(signal.points[0][0].color, '#60F93B');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -43,13 +56,21 @@ describe('BirthdayReminder', () => {
     });
 
     describe('#run()', () => {
-        it('1 week before the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 10, 28));
+        it('checks color of the selected keyboard key 1 week before the birthday date', async function () {
+            const today = new Date();
+            const dayToCome = new Date();
+            // we add less than 1 week to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 6);
+            const simulatedDate = getConfigForDate(dayToCome);            
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
-                assert.ok(signal.points);
-                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// we check if we receive the signal with the birthday name
-                console.log('<<<<<<<<<1 week:', signal.points);
+                assert.ok(signal);
+                // we check if we receive the signal with the birthday name
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson)); 
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
+                // checks if the color is yellow
+                assert.equal(signal.points[0][0].color, '#C55D11');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -57,13 +78,21 @@ describe('BirthdayReminder', () => {
     });
 
     describe('#run()', () => {
-        it('2 week before the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 11, 06));
+        it('checks color of the selected keyboard key 2 weeks before the birthday date', async function () {
+            const today = new Date();
+            const dayToCome = new Date();
+            // we add less than 2 weeks to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 14);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
-                assert.ok(signal.points);
-                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// we check if we receive the signal with the birthday name
-                console.log('<<<<<<<<<2 week:', signal.points);
+                assert.ok(signal);
+                // we check if we receive the signal with the birthday name
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
+                // checks if the color is yellow/orange
+                assert.equal(signal.points[0][0].color, '#D6BD1D');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -71,14 +100,21 @@ describe('BirthdayReminder', () => {
     });
 
     describe('#run()', () => {
-        it('1 month before the birthday date', async function () {
-            const simulatedDate = getConfigForDate(new Date(2019, 11, 24));
+        it('checks color of the selected keyboard key 1 month before the birthday date', async function () {
+            const today = new Date();
+            const dayToCome = new Date();
+            // we add less than 1 month to the current day in order to simulate the birthday date
+            dayToCome.setDate(today.getDate() + 27);
+            const simulatedDate = getConfigForDate(dayToCome);
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
                 assert.ok(signal.points);
-                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));// we check if we receive the signal with the birthday name
-                console.log('<<<<<<<<<1 month:', signal.points);
-                //assert.equal(signal, null);
+                // we check if we receive the signal with the birthday name
+                assert(signal.message.includes(simulatedDate.applet.user.nameOfTheBirthdayPerson));
+                // check if the key is not blinking
+                assert.equal(signal.points[0][0].effect, q.Effects.SET_COLOR);
+                // checks if the color is orange
+                assert.equal(signal.points[0][0].color, '#F9E53B');
             }).catch((error) => {
                 assert.fail(error)
             });
@@ -86,7 +122,7 @@ describe('BirthdayReminder', () => {
     });
 })
 
-//This function gives the configuration needed for the birthday date
+// This function gives the configuration needed for the birthday date
 function getConfigForDate(date) {
     const defaultConfig = {
         applet: {
@@ -104,7 +140,7 @@ function getConfigForDate(date) {
     return defaultConfig;
 }
 
-//Build application
+// Build application
 async function buildApp(config) {
     let app = new t.BirthdayReminder();
     await app.processConfig(config);
