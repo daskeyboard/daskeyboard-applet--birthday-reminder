@@ -34,11 +34,9 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key more than 1 month before the birthday date', async function () {
-            var date = new Date();
-            var dateTime = date.getTime();
-            // 60 secondes * 60 minutes * 24 heures
-            // On multiplie par 1000 car le time est exprimé en millisecondes
-            var endTime = dateTime + ((60*60*24) * 1000) * 75;
+            const today = new Date();
+            dayToCome = new Date();
+            const endTime =  dayToCome.setDate(today.getDate() +75);
             const simulatedDate = getConfigForDate(new Date(endTime));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
@@ -57,11 +55,9 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key 1 week before the birthday date', async function () {
-            var date = new Date();
-            var dateTime = date.getTime();
-            // 60 secondes * 60 minutes * 24 heures
-            // On multiplie par 1000 car le time est exprimé en millisecondes
-            var endTime = dateTime + ((60*60*24) * 1000) * 6;
+            const today = new Date();
+            dayToCome = new Date();
+            const endTime =  dayToCome.setDate(today.getDate() + 6);
             const simulatedDate = getConfigForDate(new Date(endTime));            
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
@@ -80,9 +76,9 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key 2 weeks before the birthday date', async function () {
-            var date = new Date();
-            var dateTime = date.getTime();
-            var endTime = dateTime + ((60*60*24) * 1000) * 13;
+            const today = new Date();
+            dayToCome = new Date();
+            const endTime =  dayToCome.setDate(today.getDate() + 14);
             const simulatedDate = getConfigForDate(new Date(endTime));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
@@ -101,11 +97,9 @@ describe('BirthdayReminder', () => {
 
     describe('#run()', () => {
         it('checks color of the selected keyboard key 1 month before the birthday date', async function () {
-            var date = new Date();
-            var dateTime = date.getTime();
-            // 60 secondes * 60 minutes * 24 heures
-            // On multiplie par 1000 car le time est exprimé en millisecondes
-            var endTime = dateTime + ((60*60*24) * 1000) * 27;
+            const today = new Date();
+            dayToCome = new Date();
+            const endTime =  dayToCome.setDate(today.getDate() + 27);
             const simulatedDate = getConfigForDate(new Date(endTime));
             let app = await buildApp(simulatedDate);
             return app.run().then((signal) => {
