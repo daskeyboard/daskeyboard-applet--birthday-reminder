@@ -19,7 +19,7 @@ The selected key will progressively change from green to blinking red as the bir
 Requires a Das Keyboard Q Series: www.daskeyboard.com
 
 Installation, configuration and uninstallation of applets is done within
-the Q Desktop application (<https://www.daskeyboard.com/q)>
+the Q Desktop application (<https://www.daskeyboard.com/q>)
 
 ## Running tests
 
